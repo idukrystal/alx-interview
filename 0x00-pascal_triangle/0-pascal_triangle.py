@@ -18,15 +18,12 @@ def pascal_triangle(n):
     if n <= 0:
         return []
 
-    # Initialize the triangle with the first row containing 1.
     triangle = [[1]]
 
-    # Generate the remaining rows of the triangle.
     while len(triangle) < n:
         last_row = triangle[-1]
         next_row = [1]
 
-        # Calculate the values for the next row
         for i in range(1, len(last_row)):
             next_row.append(last_row[i - 1] + last_row[i])
 
