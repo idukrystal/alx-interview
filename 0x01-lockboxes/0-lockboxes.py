@@ -18,7 +18,7 @@ def check_unlocked_box(box, boxes, unlocked_boxes):
     Recursion
     '''
     for key in box:
-        if key not in unlocked_boxes and key < len(boxes) and key > 0:
+        if key and key not in unlocked_boxes and key < len(boxes) and key > 0:
             unlocked_boxes.add(key)
             check_unlocked_box(boxes[key], boxes, unlocked_boxes)
     return len(unlocked_boxes) == len(boxes)
