@@ -9,7 +9,7 @@ def canUnlockAll(boxes):
     can all be opened
     '''
     if len(boxes) <= 0:
-        return False
+        return True
     unlocked_boxes = set()
     unlocked_boxes.add(0)
     return check_unlocked_box(boxes[0], boxes, unlocked_boxes)
