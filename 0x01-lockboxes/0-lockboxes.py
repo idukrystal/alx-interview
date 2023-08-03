@@ -8,8 +8,6 @@ def canUnlockAll(boxes):
     ''' Checks if a series of boxes containg eachothers keys
     can all be opened
     '''
-    if len(boxes) <= 0:
-        return True
     unlocked_boxes = set()
     unlocked_boxes.add(0)
     return check_unlocked_box(boxes[0], boxes, unlocked_boxes)
