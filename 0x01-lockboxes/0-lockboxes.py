@@ -1,28 +1,21 @@
 #!/usr/bin/python3
-''' A module to check if a series of boxes containg
-eachothers keys can all be opened
+'''A module for working with lockboxes.
 '''
 
 
 def canUnlockAll(boxes):
-    ''' Checks if a series of boxes containg eachothers keys
-    can all be opened
+    '''Checks if all the boxes in a list of boxes containing the keys
+    (indices) to other boxes can be unlocked given that the first
+    box is unlocked.
     '''
-    if len(boxes) <=  0:
-        return False
-    unlocked_boxes = set()
-    unlocked_boxes.add(0)
-    return check_unlocked_box(boxes[0], boxes, unlocked_boxes)
-
-
-def check_unlocked_box(box, boxes, unlocked_boxes):
-    ''' Helper function for canUnlockAll allows solution by
-    Recursion
-    '''
-    for key in box:
-        if key not in unlocked_boxes:
-            unlocked_boxes.add(key)
-            check_unlocked_box(boxes[key], boxes, unlocked_boxes)
-    if len(unlocked_boxes) == len(boxes):
-        return True
-    return False
+    n = len(boxes)
+    seen_boxes = set([0])
+    unseen_boxes = set(boxes[0]).difference(set([0]))
+    while len(unseen_boxes) > 0:
+        boxIdx = unseen_boxes.pop()
+        if not boxIdx or boxIdx >= n or boxIdx < 0:
+            continue
+        if boxIdx not in seen_boxes:
+            unseen_boxes = unseen_boxes.union(boxes[boxIdx])
+            seen_boxes.add(boxIdx)
+    return n == len(seen_boxes)
