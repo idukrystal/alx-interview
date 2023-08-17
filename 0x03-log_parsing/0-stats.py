@@ -46,3 +46,7 @@ try:
 except KeyboardInterrupt:
     print(f"File size: {file_size}")
     print_dict(status_codes)
+
+else:
+    print(f"File size: {file_size}")
+    print_dict(status_codes)
