@@ -30,17 +30,20 @@ def print_dict(dct):
         if dct[key] != 0:
             print(key+": "+str(dct[key]))
 
+
 def print_stats():
     ''' prints matrices statistics '''
     print(f"File size: {file_size}")
     print_dict(status_codes)
 
+
 try:
     for line in stdin:
         line = line.split()
-        if len(line) != 9 or line[7] not in status_codes:
+        if len(line) != 9:
             continue
-        status_codes[line[7]] += 1
+        if line[7] in status_codes:
+            status_codes[line[7]] += 1
         lines_read += 1
         file_size += int(line[8])
         if lines_read == 10:
