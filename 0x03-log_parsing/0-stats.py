@@ -41,6 +41,6 @@ for line in stdin:
     file_size += int(line[8])
     if lines_read == 10:
         lines_read = 0
-        print(f"File Size: {file_size}")
+        print(f"File size: {file_size}")
         print_dict(status_codes)
         reset_dict(status_codes)
