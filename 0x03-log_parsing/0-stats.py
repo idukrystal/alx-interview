@@ -50,5 +50,4 @@ except KeyboardInterrupt:
     print_stats()
 
 else:
-    if lines_read != 0:
-        print_stats()
+    print_stats()
