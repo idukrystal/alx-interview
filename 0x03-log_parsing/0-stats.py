@@ -26,7 +26,7 @@ def reset_dict(dct):
 
 def print_dict(dct):
     '''' Prints a dictionaries key,values line by line '''
-    for key in dct:
+    for key in sorted(dct):
         if dct[key] != 0:
             print(key+": "+str(dct[key]))
 
@@ -43,7 +43,6 @@ try:
             lines_read = 0
             print(f"File size: {file_size}")
             print_dict(status_codes)
-except KeyboardInterrupt:
-    lines_read = 0
+finally:
     print(f"File size: {file_size}")
     print_dict(status_codes)
