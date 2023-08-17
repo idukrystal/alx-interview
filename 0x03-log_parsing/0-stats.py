@@ -31,16 +31,19 @@ def print_dict(dct):
             print(key+": "+str(dct[key]))
 
 
-for line in stdin:
-    line = line.split()
-    if len(line) != 9 or line[7] not in status_codes:
-        continue
-
-    status_codes[line[7]] += 1
-    lines_read += 1
-    file_size += int(line[8])
-    if lines_read == 10:
-        lines_read = 0
-        print(f"File size: {file_size}")
-        print_dict(status_codes)
-        reset_dict(status_codes)
+try:
+    for line in stdin:
+        line = line.split()
+        if len(line) != 9 or line[7] not in status_codes:
+            continue
+        status_codes[line[7]] += 1
+        lines_read += 1
+        file_size += int(line[8])
+        if lines_read == 10:
+            lines_read = 0
+            print(f"File size: {file_size}")
+            print_dict(status_codes)
+except KeyboardInterrupt:
+    lines_read = 0
+    print(f"File size: {file_size}")
+    print_dict(status_codes)
