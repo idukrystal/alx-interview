@@ -26,10 +26,14 @@ def reset_dict(dct):
 
 def print_dict(dct):
     '''' Prints a dictionaries key,values line by line '''
-    for key in sorted(dct):
+    for key in dct:
         if dct[key] != 0:
             print(key+": "+str(dct[key]))
 
+def print_stats():
+    ''' prints matrices statistics '''
+    print(f"File size: {file_size}")
+    print_dict(status_codes)
 
 try:
     for line in stdin:
@@ -41,12 +45,10 @@ try:
         file_size += int(line[8])
         if lines_read == 10:
             lines_read = 0
-            print(f"File size: {file_size}")
-            print_dict(status_codes)
+            print_stats()
 except KeyboardInterrupt:
-    print(f"File size: {file_size}")
-    print_dict(status_codes)
+    print_stats()
 
 else:
-    print(f"File size: {file_size}")
-    print_dict(status_codes)
+    if lines_read != 0:
+        print_stats()
