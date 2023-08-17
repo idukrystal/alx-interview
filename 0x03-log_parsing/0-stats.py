@@ -19,7 +19,7 @@ file_size = 0
 
 
 def reset_dict(dct):
-    ''' Resets a dictionaries values to 0 '''
+    ''' Resets a dictionaries values to 0'''
     for key in dct:
         dct[key] = 0
 
@@ -43,6 +43,6 @@ try:
             lines_read = 0
             print(f"File size: {file_size}")
             print_dict(status_codes)
-finally:
+except KeyboardInterrupt:
     print(f"File size: {file_size}")
     print_dict(status_codes)
