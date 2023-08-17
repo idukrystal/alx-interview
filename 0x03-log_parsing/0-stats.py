@@ -40,17 +40,16 @@ def print_stats():
 try:
     for line in stdin:
         line = line.split()
+        line = line[::-1]
         if len(line) <= 2:
             continue
-        if line[7] in status_codes:
-            status_codes[line[7]] += 1
+        if line[1] in status_codes:
+            status_codes[line[1]] += 1
         lines_read += 1
-        file_size += int(line[8])
+
+        file_size += int(line[0])
         if lines_read == 10:
             lines_read = 0
             print_stats()
-except KeyboardInterrupt:
-    print_stats()
-
-else:
+finally:
     print_stats()
