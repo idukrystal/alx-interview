@@ -1,46 +1,57 @@
-from collections import defaultdict
-import signal
-import sys
+#!/usr/bin/python3
+''' Alx project module on log parsing '''
 
-# Define the status codes to track
-status_codes = {200, 301, 400, 401, 403, 404, 405, 500}
+import re
+from sys import stdin
 
-# Initialize variables to store metrics
-total_file_size = 0
-status_code_counts = defaultdict(int)
-line_count = 0
+status_codes = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+}
 
-def print_statistics(signal, frame):
-    print("Total file size:", total_file_size)
-    for code in sorted(status_codes):
-        if status_code_counts[code] > 0:
-            print(f"{code}: {status_code_counts[code]}")
-    sys.exit(0)
+lines_read = 0
+file_size = 0
 
-signal.signal(signal.SIGINT, print_statistics)
+
+def reset_dict(dct):
+    ''' Resets a dictionaries values to 0'''
+    for key in dct:
+        dct[key] = 0
+
+
+def print_dict(dct):
+    '''' Prints a dictionaries key,values line by line '''
+    for key in dct:
+        if dct[key] != 0:
+            print(key+": "+str(dct[key]))
+
+
+def print_stats():
+    ''' prints matrices statistics '''
+    print(f"File size: {file_size}")
+    print_dict(status_codes)
+
 
 try:
-    for line in sys.stdin:
-        parts = line.strip().split()
-        if len(parts) != 10:
+    for line in stdin:
+        line = line.split()
+        if len(line) != 9:
             continue
-        
-        ip, _, _, _, _, _, request, status_code_str, file_size_str = parts
-        if not status_code_str.isdigit():
-            continue
-        
-        status_code = int(status_code_str)
-        if status_code not in status_codes:
-            continue
-        
-        file_size = int(file_size_str)
-        
-        total_file_size += file_size
-        status_code_counts[status_code] += 1
-        line_count += 1
-        
-        if line_count % 10 == 0:
-            print_statistics(None, None)
-
+        if line[7] in status_codes:
+            status_codes[line[7]] += 1
+        lines_read += 1
+        file_size += int(line[8])
+        if lines_read == 10:
+            lines_read = 0
+            print_stats()
 except KeyboardInterrupt:
-    print_statistics(None, None)
+    print_stats()
+
+else:
+    print_stats()
