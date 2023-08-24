@@ -11,18 +11,23 @@ def validUTF8(data):
     rem_bytes = 0
     for byte in data:
         if rem_bytes == 0:
-            if byte in range(128):
+            if byte >> 7 == 0:
                 rem_bytes = 0
-            elif byte in range(192, 224):
+            elif byte >> 5 == 0b110:
                 rem_bytes = 1
-            elif byte in range(224, 240):
+            elif byte >> 4 == 0b1110:
                 rem_bytes = 2
-            elif byte in range(240, 248):
+            elif byte >> 3 == 0b11110:
                 rem_bytes = 3
             else:
                 return False
         else:
-            if byte not in range(128, 192):
+            if byte >> 6 != 0b10:
                 return False
             rem_bytes -= 1
     return rem_bytes == 0
+
+
+x = 128
+# print(x)
+# print(x >> 7)
