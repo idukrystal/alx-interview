@@ -39,4 +39,4 @@ def validUTF8(data):
     except StopIteration:
         if rem_bytes == 0:
             return True
-        return True
+        return False
