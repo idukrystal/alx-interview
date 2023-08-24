@@ -8,8 +8,10 @@ def validUTF8(data):
     """ determines if a given data set
     represents a valid UTF-8 encoding.
     """
+    if not isinstance(data, list):
+        return False
     data = iter(data)
-    rem_bytes = -1
+    rem_bytes = 0
     try:
         byte = next(data)
         while byte:
