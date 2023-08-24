@@ -10,6 +10,8 @@ def validUTF8(data):
     """
     rem_bytes = 0
     for byte in data:
+        if byte < 0 or byte > 0x10FFFF:
+            return false
         if rem_bytes == 0:
             if byte >> 7 == 0:
                 rem_bytes = 0
@@ -27,7 +29,6 @@ def validUTF8(data):
             rem_bytes -= 1
     return rem_bytes == 0
 
-
-x = 128
-# print(x)
+#data = [0xF4, 0x8F, 0xBF, 0xBD, 0xF0, 0x90, 0x80, 0x80] 
+#print(validUTF8(data))
 # print(x >> 7)
