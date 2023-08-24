@@ -11,7 +11,7 @@ def validUTF8(data):
     rem_bytes = 0
     for byte in data:
         if rem_bytes == 0:
-            if byte in range(1, 128):
+            if byte in range(128):
                 rem_bytes = 0
             elif byte in range(192, 224):
                 rem_bytes = 1
