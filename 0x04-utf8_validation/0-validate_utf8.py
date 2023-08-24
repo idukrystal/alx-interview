@@ -8,8 +8,6 @@ def validUTF8(data):
     """ determines if a given data set
     represents a valid UTF-8 encoding.
     """
-    if data is None:
-        return False
     if not isinstance(data, list):
         return False
     for i in data:
@@ -41,4 +39,4 @@ def validUTF8(data):
     except StopIteration:
         if rem_bytes == 0:
             return True
-        return False
+        return True
