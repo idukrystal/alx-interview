@@ -10,6 +10,9 @@ def validUTF8(data):
     """
     if not isinstance(data, list):
         return False
+    for i in data:
+        if not isinstance(i, int):
+            return False
     data = iter(data)
     rem_bytes = 0
     try:
