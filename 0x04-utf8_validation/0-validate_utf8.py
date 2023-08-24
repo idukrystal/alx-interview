@@ -9,7 +9,7 @@ def validUTF8(data):
     represents a valid UTF-8 encoding.
     """
     data = iter(data)
-    rem_bytes = 0
+    rem_bytes = -1
     try:
         byte = next(data)
         while byte:
