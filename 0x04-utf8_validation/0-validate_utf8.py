@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 """  Write a method that determines if a
 given data set represents a valid UTF-8 encoding.
@@ -8,35 +9,26 @@ def validUTF8(data):
     """ determines if a given data set
     represents a valid UTF-8 encoding.
     """
-    if not isinstance(data, list):
-        return False
-    for i in data:
-        if not isinstance(i, int):
-            return False
-    data = iter(data)
     rem_bytes = 0
-    try:
-        byte = next(data)
-        while byte:
-            if byte in range(128):
+    for byte in data:
+        byte = byte & 255
+        if rem_bytes == 0:
+            if byte >> 7 == 0:
+                rem_bytes = 0
+            elif byte >> 5 == 0b110:
                 rem_bytes = 1
-            elif byte in range(192, 224):
+            elif byte  >> 4 == 0b1110:
                 rem_bytes = 2
-            elif byte in range(224, 240):
+            elif byte >> 3 == 0b11110:
                 rem_bytes = 3
-            elif byte in range(240, 248):
-                rem_bytes = 4
             else:
                 return False
+        else:
+            if byte >> 6 != 0b10:
+                return False
             rem_bytes -= 1
-            while rem_bytes > 0:
-                byte = next(data)
-                if byte not in range(128, 192):
-                    return False
-                rem_bytes -= 1
-            byte = next(data)
+    return rem_bytes == 0
 
-    except StopIteration:
-        if rem_bytes == 0:
-            return True
-        return False
+#data = [0xF4, 0x8F, 0xBF, 0xBD, 0xF0, 0x90, 0x80, 0x80] 
+#print(validUTF8(data))
+# print(x >> 7)
