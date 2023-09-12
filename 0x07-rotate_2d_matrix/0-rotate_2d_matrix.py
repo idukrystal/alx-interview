@@ -7,7 +7,6 @@ def rotate_2d_matrix(matrix):
     width = len(matrix[0])
     length = len(matrix)
     original_matrix = list()
-    print(f">>> matrix is {length} × {width}")
 
     for i in range(length):
         original_matrix.insert(i, matrix[i].copy())
