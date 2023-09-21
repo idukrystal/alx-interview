@@ -12,11 +12,9 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
     for coin in coins:
-        print(coin)
         div = total//coin
         no += div
         total -= div * coin
-        print(total)
         if total == 0:
             return no
     return -1
