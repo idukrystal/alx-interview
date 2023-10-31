@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+""" A Module it is """
+
 
 def isWinner(x, nums):
+    """ A Function it is """
     players = {
         "Maria": 0,
         "Ben": 0
@@ -31,6 +34,7 @@ def isWinner(x, nums):
 
 
 def isPrime(num):
+    """ Another Function it is """
     if (num == 2):
         return True
     if ((num % 2) == 0 or num == 1):
@@ -44,6 +48,7 @@ def isPrime(num):
 
 
 def removeMultiples(num, clist):
+    """ Just another Fuction """
     multiples = []
     for i in clist:
         if (i % num) == 0:
