@@ -41,8 +41,8 @@ def isPrime(num):
         return False
     if (num == 3):
         return True
-    for i in range(2, (num//2), 2):
-        if not (((num % i)) == 0):
+    for i in range(3, (num//2), 2):
+        if ((num % i) == 0):
             return False
     return True
 
