@@ -3,6 +3,8 @@
 
 
 def isWinner(x, nums):
+    if (x > 90):
+        print (str(nums));
     """ A Function it is """
     players = {
         "Maria": 0,
