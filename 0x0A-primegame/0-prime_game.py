@@ -28,7 +28,7 @@ def isWinner(x, nums):
         if players["Maria"] < players["Ben"]:
             return "Ben"
         elif players["Maria"] == players["Ben"]:
-            return "Tie"
+            return 
         else:
             return "Maria"
 
