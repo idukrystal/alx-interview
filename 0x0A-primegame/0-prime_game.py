@@ -25,12 +25,12 @@ def isWinner(x, nums):
                 players[winner] += 1
                 break
         i += 1
-        if players["Maria"] < players["Ben"]:
-            return "Ben"
-        elif players["Maria"] == players["Ben"]:
-            return None
-        else:
-            return "Maria"
+    if players["Maria"] < players["Ben"]:
+        return "Ben"
+    elif players["Maria"] == players["Ben"]:
+        return None
+    else:
+        return "Maria"
 
 
 def isPrime(num):
