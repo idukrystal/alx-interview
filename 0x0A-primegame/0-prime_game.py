@@ -10,17 +10,14 @@ def isWinner(x, nums):
     }
     highest = max(nums)
     primes = list(range(2, highest+1))
-    sqrt = 0
-    while (sqrt * sqrt) < highest:
-        sqrt += 1
-    for i in range(2, sqrt):
+    sqrt = (highest**0.5)
+    for i in range(2, sqrt + 1):
         primes = list(filter(lambda x: ((x % i) != 0) or x == i, primes))
-    i = 0
-    while i < x:
+
+    for i in range(x):
         no = len(list(filter(lambda x: x <= nums[i], primes)))
         winner = "Ben" if (no % 2) == 0 else "Maria"
         players[winner] += 1
-        i += 1
 
     if players["Maria"] < players["Ben"]:
         return "Ben"
