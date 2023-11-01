@@ -9,7 +9,7 @@ def isWinner(x, nums):
         "Ben": 0
     }
     highest = max(nums)
-    primes = list(range(2, highest))
+    primes = list(range(2, highest+1))
     sqrt = 0
     while (sqrt * sqrt) < highest:
         sqrt += 1
