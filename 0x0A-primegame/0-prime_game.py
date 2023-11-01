@@ -10,7 +10,7 @@ def isWinner(x, nums):
     }
     highest = max(nums)
     primes = list(range(2, highest+1))
-    sqrt = (highest**0.5)
+    sqrt = int((highest**0.5))
     for i in range(2, sqrt + 1):
         primes = list(filter(lambda x: ((x % i) != 0) or x == i, primes))
 
